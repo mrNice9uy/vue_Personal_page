@@ -2,26 +2,12 @@
   <div id="app">
   <h1>Choose your destiny</h1>
   <hr>
-  <Beer />
-  </div>
+  <div>
+    <router-view />  
+  </div>  
+</div>
 </template>
 
-<script>
-import Beer from '@/components/Beer'
-export default {
-  name: 'App',
-  /*methods: {
-    fetchData() {
-      fetch('https://random-data-api.com/api/beer/random_beer')
-      .then(response => response.json())
-      .then(json => {console.log(json)})
-    }
-  },*/
-  components: {
-    Beer
-  }
-}
-</script>
 
 <style>
 #app {

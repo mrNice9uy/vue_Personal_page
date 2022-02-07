@@ -1,19 +1,22 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "@views/Home";
+import VueRouter from "vue-router";
+import HomePage from "./components/HomePage";
+import Beer from "./components/Beer";
+import About from "./components/About";
 
-Vue.use(Router);
-
-export default new Router({
-  mode: "history",
+export default new VueRouter({
   routes: [
     {
-      path: "/",
-      componet: Home,
+      path: "",
+      component: HomePage,
     },
     {
-      path: "beer",
-      componet: () => import("./views/Beer.vue"),
+      path: "/about",
+      component: About,
+    },
+    {
+      path: "/beer",
+      component: Beer,
     },
   ],
+  mode: "history",
 });
