@@ -1,3 +1,3 @@
 module.exports = {
-  publicPat: "vue-personal-page",
+  publicPath: "/vue_Personal_page/",
 };
