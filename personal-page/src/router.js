@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import HomePage from "./components/HomePage";
+import Home from "./components/Home";
 import Beer from "./components/Beer";
 import About from "./components/About";
 
@@ -7,7 +7,7 @@ export default new VueRouter({
   routes: [
     {
       path: "",
-      component: HomePage,
+      component: Home,
     },
     {
       path: "/about",

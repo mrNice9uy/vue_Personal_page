@@ -10,30 +10,30 @@
         </div>
         <div class="bg">
             <div class="head_">            
-                <div >ID</div>
-                <div >UID</div>                        
+                <div >ID:</div>
+                <div >UID:</div>                        
                 <div>Brand:</div>
                 <div>Name:</div>
                 <div>Style:</div>
-                <div>Hop</div>
-                <div>Yeast</div>
-                <div>Malts</div>
-                <div>IBU</div>
+                <div>Hop:</div>
+                <div>Yeast:</div>
+                <div>Malts:</div>
+                <div>IBU:</div>
                 <div>Alcohol:</div>
                 <div>BLG:</div>
             </div>                
-        <div class="head_" v-for="item in list" v-bind:key="item.id">
-            <div class="head_item">{{item.id}}</div>
-            <div class="head_item">{{item.uid}}</div>
-            <div class="head_item">{{item.brand}}</div>
-            <div class="head_item">{{item.name}}</div>
-            <div class="head_item">{{item.style}}</div>            
-            <div class="head_item">{{item.hop}}</div>
-            <div class="head_item">{{item.yeast}}</div>
-            <div class="head_item">{{item.malts}}</div>
-            <div class="head_item">{{item.ibu}}</div>
-            <div class="head_item">{{item.alcohol}}</div>
-            <div class="head_item">{{item.blg}}</div>            
+        <div :favBeer="list" class="head_" v-for="item in list" v-bind:key="item.id">
+            <div>{{item.id}}</div>
+            <div>{{item.uid}}</div>
+            <div>{{item.brand}}</div>
+            <div>{{item.name}}</div>
+            <div>{{item.style}}</div>            
+            <div>{{item.hop}}</div>
+            <div>{{item.yeast}}</div>
+            <div>{{item.malts}}</div>
+            <div>{{item.ibu}}</div>
+            <div>{{item.alcohol}}</div>
+            <div>{{item.blg}}</div>            
         </div>
         <div>
             <img src="https://avatarko.ru/img/kartinka/14/multfilm_Simpsons_Homer_13968.jpg" alt="pic">
@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import BeerItem from '@/components/BeerItem'
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -56,19 +55,17 @@ export default {
     mounted() {
         axios.get('https://random-data-api.com/api/beer/random_beer')
         .then((response) => {
+            localStorage.setItem('favBeer',JSON.stringify(response.data))
             this.list = [response.data]
-            console.log(this.list)
         })
         .catch(e => console.log('Oh, no!', e.message))
-    },
-    components: {
-        
     },
     methods: {
         fetchData() {
             axios.get('https://random-data-api.com/api/beer/random_beer')
             .then((response) => {
-            this.list = [response.data]
+                localStorage.setItem('favBeer',JSON.stringify(response.data))
+                this.list = [response.data]
             })
         }
     }
